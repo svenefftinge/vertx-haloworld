@@ -1,0 +1,4 @@
+{
+    "main":         "com.shinetech.haloworld.HaloworldServer",
+    "preserve-cwd": true
+}

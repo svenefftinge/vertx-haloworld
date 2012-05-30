@@ -1,0 +1,59 @@
+<project name="Haloworld-Vertx" default="dist" basedir=".">
+
+    <!-- global properties -->
+    <property name="modules.dir" value="src/mods"/>
+    <property name="scripts.dir" value="src/scripts"/>
+    <property name="dist.dir" value="dist"/>
+    <property name="vertx.libs" value="${VERTX_HOME}/lib/jars"/>
+
+    <!-- targets -->
+    <target name="clean">
+        <delete dir="${dist.dir}" />
+    </target>
+
+    <target name="build-mod">
+        <basename property="mod.dir.name" file="${basedir}"/>
+        <property name="classes.dir" value="${dist.modules.dir}/${mod.dir.name}"/>
+        <mkdir dir="${classes.dir}"/>
+        <!-- compile classpath for modules -->
+        <path id="mods.classpath">
+            <fileset dir="${vertx.libs}">
+                <include name="**/*.jar"/>
+            </fileset>
+        </path>
+        <copy todir="${classes.dir}" file="${basedir}/mod.json"/>
+        <echo>-- Compiling module: ${basedir} --</echo>
+        <javac classpathref="mods.classpath" srcdir="${basedir}" destdir="${classes.dir}"/>
+        <echo>-- Completed --</echo>
+        <!--<echo>Vertx libs: ${vertx.libs}</echo>-->
+
+    </target>
+
+    <!-- copy web directory and contents of scripts over to distribution folder -->
+    <target name="copy-static-files">
+        <echo>Copying static files over</echo>
+        <mkdir dir="${dist.dir}/web"/>
+        <copy todir="${dist.dir}/web">
+            <fileset dir="src/web" excludes="*.iml"/>
+        </copy>
+        <mkdir dir="${dist.dir}/bin"/>
+        <copy todir="${dist.dir}/bin">
+            <fileset dir="${scripts.dir}" excludes="*.iml"/>
+        </copy>
+        <chmod perm="+x" dir="${dist.dir}/bin" includes="**/*.sh"/>
+    </target>
+
+    <target name="compile-mods">
+        <!-- create module base dir in distribution -->
+        <mkdir dir="${dist.dir}/mods"/>
+
+        <!-- iterate over each module and compile contents -->
+        <subant target="build-mod" genericantfile="${basedir}/build.xml">
+            <property name="dist.modules.dir" value="${basedir}/${dist.dir}/mods"/>
+            <dirset dir="${modules.dir}" includes="*"/>
+        </subant>
+    </target>
+
+    <target name="dist" depends="clean, compile-mods, copy-static-files"/>
+
+</project>

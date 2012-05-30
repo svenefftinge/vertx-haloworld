@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Haloworld</title>
+        <script type="text/javascript" src="js/jquery/jquery-1.7.2.min.js"></script>
+        <script type="text/javascript" src="js/jquery/jquery-ui-1.8.20.custom.min.js"></script>
+        <script type="text/javascript" src="js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="js/bootstrap-modal.js"></script>
+        <script type="text/javascript" src="js/d3.v2.min.js"></script>
+        <script src="http://cdn.sockjs.org/sockjs-0.3.1.min.js"></script>
+        <script src="js/vertx/vertxbus.js"></script>
+        <script type="text/javascript" src="js/haloworld.js"></script>
+        <script type="text/javascript" src="js/text-result-widget.js"></script>
+        <script type="text/javascript" src="js/server-stats-widget.js"></script>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="css/bootstrap.css" rel="stylesheet">
+        <style>
+            body {
+                padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
+            }
+        </style>
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link href="css/bootstrap-responsive.min.css" rel="stylesheet">
+        <link href="css/haloworld.css" rel="stylesheet">
+        <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+        <!--[if lt IE 9]>
+        <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+    </head>
+    <body>
+         <!--Fixed, non-scrolling top navbar -->
+        <div class="navbar navbar-fixed-top">
+            <div class="navbar-inner">
+                <div class="container">
+                    <a class="brand" href="#"><b>HAL</b>OWORLD</a>
+                    <div class="nav-collapse">
+                        <a class="btn pull-right" id="show-log-messages-btn" href="#">Show Log</a>
+                        <a class="btn btn-info pull-right" id="hide-log-messages-btn" href="#">Hide Log</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div id="content-panel" class="container">
+
+            <div class="row">
+                <div class="span7">
+                    <h3>Results from HAL</h3>
+                    <div id="feed"></div>
+                </div>
+                <div id="chat" class="span5">
+                    <a id="clear-chat-button" href="#">Clear chat</a><h3 id="chatMembers"></h3>
+                    <div id="messages">
+
+                    </div>
+
+                    <form id="chat-form" class="form-inline">
+                        <input id="message-box" type="text" class="span4" placeholder="Enter your message">
+                        <a id="send-button" class="btn">Ask away!</a>
+                    </form>
+
+                </div>
+            </div>
+
+        </div>
+
+         <div class="modal hide fade" id="loginModal">
+             <div class="modal-header">
+                 <button class="close" data-dismiss="modal">×</button>
+                 <h3>Join the chat</h3>
+             </div>
+             <div class="modal-body">
+                 <form id="login-form" class="form-vertical">
+                     <label for="login-name">Your name:</label>
+                     <input id="login-name" type="text" placeholder="Enter your chat name"/>
+                 </form>
+             </div>
+             <div class="modal-footer">
+                 <a id="join-btn" href="#" class="btn btn-primary">Join Chat</a>
+             </div>
+         </div>
+    </body>
+</html>

@@ -1,0 +1,88 @@
+body {
+    background: url(../img/irongrip.png);
+}
+
+h3 {
+    font-size: 14pt;
+}
+
+#content-panel {
+    background-color: white;
+    padding:10px;
+    border: 1px solid #cccccc;
+}
+
+#messages {
+    border: 1px solid #AAAAAA;
+
+    overflow: auto;
+    overflow-x: hidden;
+
+}
+
+#feed {
+
+    overflow: auto;
+    overflow-x: hidden;
+}
+
+#feed, #messages {
+    height: 500px;
+    margin-top: 15px;
+    font-size: 12pt;
+    line-height: 16pt;
+}
+
+.message {
+    padding: 5px;
+    padding-bottom: 15px;
+    margin: 2px 2px 5px;
+    border-bottom: 1px solid #DDDDDD;
+}
+
+
+#chat-form {
+    border: 1px solid #EEEEEE;
+    margin-top: 5px;
+    margin-bottom: 0px;
+    padding:5px;
+}
+
+#clear-chat-button {
+    float: right;
+}
+
+.result {
+    padding: 5px;
+    margin-bottom: 5px;
+}
+.result.feed {
+    background-color: #FAFAFA;
+    border: 1px solid #137C9B;
+    padding: 10px;
+}
+
+.result.log {
+    background-color: #EEEEEE;
+    border: 1px solid #E0E0E0;
+    padding: 5px;
+    font-size:12pt;
+}
+
+.result .label {
+    line-height: 16pt;
+}
+
+button.close {
+    padding: 0;
+    cursor: pointer;
+    background: transparent;
+    border: 0;
+    -webkit-appearance: none;
+}
+
+/* SVG styling */
+rect {
+    stroke: #137C9B;
+    fill:   #2F96B4;
+}
