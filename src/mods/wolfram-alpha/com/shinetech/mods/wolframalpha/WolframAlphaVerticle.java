@@ -22,7 +22,7 @@ import java.net.URLEncoder;
  * Main
  */
 public class WolframAlphaVerticle extends Verticle {
-    private static final String API_KEY = "XX8QPW-X274AP8K34";
+    private static final String API_KEY = "<Your API key goes here>";
     private static final String ADDRESS = "wolfram.query";
     
     Logger logger;
